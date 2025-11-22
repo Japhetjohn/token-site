@@ -1,0 +1,361 @@
+/* Modern Bento Grid Design - Tailwind Integration */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Modern Styles */
+:root {
+  --bg-dark: #0A0A0F;
+  --bg-card: #1A1A24;
+  --accent-pink: #FF2E63;
+  --accent-cyan: #08D9D6;
+  --text-muted: #9E9EA7;
+  --border-subtle: #2A2A35;
+}
+
+/* Smooth Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 46, 99, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 46, 99, 0.6);
+  }
+}
+
+/* Utility Classes */
+.slide-in {
+  animation: slideIn 0.6s ease-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.glow-effect {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Modern Card Styles */
+.card-modern {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-modern:hover {
+  border-color: rgba(255, 46, 99, 0.4);
+  box-shadow: 0 8px 32px rgba(255, 46, 99, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Gradient Text */
+.gradient-text-modern {
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Modern Button */
+.btn-modern {
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+  color: white;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-modern:hover::before {
+  left: 100%;
+}
+
+.btn-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(255, 46, 99, 0.4);
+}
+
+.btn-modern:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Input Modern */
+.input-modern {
+  background: rgba(20, 20, 25, 0.8);
+  border: 2px solid var(--border-subtle);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.input-modern:focus {
+  outline: none;
+  border-color: var(--accent-pink);
+  box-shadow: 0 0 0 3px rgba(255, 46, 99, 0.1);
+}
+
+.input-modern::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* Bento Grid Container */
+.bento-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Responsive Bento Items */
+.bento-span-full {
+  grid-column: span 12;
+}
+
+.bento-span-8 {
+  grid-column: span 8;
+}
+
+.bento-span-4 {
+  grid-column: span 4;
+}
+
+.bento-span-6 {
+  grid-column: span 6;
+}
+
+.bento-span-3 {
+  grid-column: span 3;
+}
+
+@media (max-width: 1024px) {
+  .bento-span-8,
+  .bento-span-4,
+  .bento-span-6 {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  
+  .bento-span-full,
+  .bento-span-8,
+  .bento-span-4,
+  .bento-span-6,
+  .bento-span-3 {
+    grid-column: span 4;
+  }
+}
+
+/* Status Badge */
+.status-badge-modern {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 46, 99, 0.1);
+  border: 1px solid var(--accent-pink);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Pulse Dot */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-pink);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 var(--accent-pink);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 8px rgba(255, 46, 99, 0);
+  }
+}
+
+/* Progress Bar */
+.progress-bar-modern {
+  background: rgba(20, 20, 25, 0.8);
+  height: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill-modern {
+  background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stat Card */
+.stat-card-modern {
+  text-align: center;
+  padding: 2rem;
+}
+
+.stat-icon-modern {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, rgba(255, 46, 99, 0.1), rgba(8, 217, 214, 0.1));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.stat-value-modern {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label-modern {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Message Styles */
+.message-modern {
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: none;
+}
+
+.message-modern.active {
+  display: block;
+  animation: slideIn 0.4s ease-out;
+}
+
+.message-error-modern {
+  background: rgba(255, 46, 99, 0.1);
+  border: 1px solid var(--accent-pink);
+  color: var(--accent-pink);
+}
+
+.message-success-modern {
+  background: rgba(8, 217, 214, 0.1);
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+/* Backdrop Blur */
+.backdrop-blur-modern {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Grid Background */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(255, 46, 99, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 217, 214, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-pink);
+}
+
+/* Focus Visible */
+*:focus-visible {
+  outline: 2px solid var(--accent-pink);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 46, 99, 0.3);
+  color: white;
+}
