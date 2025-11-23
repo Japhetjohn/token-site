@@ -4,7 +4,7 @@ globalThis.Buffer = Buffer;
 window.Buffer = Buffer;
 
 // === CENTRALIZED RPC CONFIG ===
-const SOLANA_RPC_ENDPOINT = 'https://late-light-patron.solana-mainnet.quiknode.pro/60a7759b1bbb4567639fbabaca0fb63aedb556d6';
+const SOLANA_RPC_ENDPOINT = 'https://omniscient-floral-theorem.solana-mainnet.quiknode.pro/fcf697e00dd6756f69a686b5e9bc27abf279f367';
 
 // Other imports
 import { CONFIG } from './config.js';
